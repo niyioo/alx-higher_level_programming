@@ -1,4 +1,4 @@
-#!/usr/bin/pyhon3
+#!/usr/bin/python3
 def uppercase(str):
     for char in str:
         if 'a' <= char <= 'z':
