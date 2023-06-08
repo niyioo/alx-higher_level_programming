@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-import builtins
-builtins.print(*__import__('string').ascii_uppercase, sep='', end='\n')
+from fast_alphabet import print_uppercase_alphabet
+print_uppercase_alphabet()
