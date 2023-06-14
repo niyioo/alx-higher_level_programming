@@ -27,7 +27,6 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-	PyBytesObject *bytes = (PyBytesObject *)p;
 	Py_ssize_t size = PyBytes_GET_SIZE(p);
 	const char *string = PyBytes_AS_STRING(p);
 	printf("[.] bytes object info\n");
