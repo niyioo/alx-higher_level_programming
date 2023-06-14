@@ -7,7 +7,6 @@
  * @p: Python bytes object
  * Return: No return value
  */
-
 void print_python_bytes(PyObject *p)
 {
 	char *str;
@@ -48,7 +47,6 @@ void print_python_bytes(PyObject *p)
  * @p: Python list object
  * Return: No return value
  */
-
 void print_python_list(PyObject *p)
 {
 	long int size, i;
@@ -66,7 +64,7 @@ void print_python_list(PyObject *p)
 	{
 		item = ((PyListObject *)p)->ob_item[i];
 		printf("Element %ld: %s\n", i, ((item)->ob_type)->tp_name);
-		if (PyBytes_Check(obj))
+		if (PyBytes_Check(item))
 			print_python_bytes(item);
 	}
 }
