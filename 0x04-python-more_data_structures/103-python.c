@@ -5,8 +5,8 @@
  * print_python_bytes - Prints bytes object information
  *
  * @p: Python bytes object
- * Return: No return value
  */
+
 void print_python_bytes(PyObject *p)
 {
 	char *str;
@@ -18,7 +18,6 @@ void print_python_bytes(PyObject *p)
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
-
 	size = ((PyVarObject *)(p))->ob_size;
 	str = ((PyBytesObject *)p)->ob_sval;
 
@@ -29,7 +28,6 @@ void print_python_bytes(PyObject *p)
 		limit = 10;
 	else
 		limit = size + 1;
-
 	printf("  first %ld bytes:", limit);
 
 	for (i = 0; i < limit; i++)
@@ -37,7 +35,6 @@ void print_python_bytes(PyObject *p)
 			printf(" %02x", str[i]);
 		else
 			printf(" %02x", 256 + str[i]);
-
 	printf("\n");
 }
 
@@ -45,8 +42,8 @@ void print_python_bytes(PyObject *p)
  * print_python_list - Prints list object information
  *
  * @p: Python list object
- * Return: No return value
  */
+
 void print_python_list(PyObject *p)
 {
 	long int size, i;
