@@ -13,7 +13,6 @@ class MagicClass:
         __radius (float): The radius of the magic circle.
     """
 
-
     def __init__(self, radius=0):
         """
         Initializes a new instance of the MagicClass.
