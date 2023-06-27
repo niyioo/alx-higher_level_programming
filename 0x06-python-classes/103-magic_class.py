@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+
+""" a MagicClass that does exactly the same as Python bytecode """
+
 import math
 
 
@@ -10,9 +13,11 @@ class MagicClass:
         __radius (float): The radius of the magic circle.
     """
 
+
     def __init__(self, radius=0):
         """
         Initializes a new instance of the MagicClass.
+
 
         Args:
             radius (float, optional): The radius of the circle. Defaults to 0.
@@ -20,6 +25,7 @@ class MagicClass:
         Raises:
             TypeError: If radius is not a number (float or integer).
         """
+
         self.__radius = 0
         if type(radius) is not int and type(radius) is not float:
             raise TypeError('radius must be a number')
