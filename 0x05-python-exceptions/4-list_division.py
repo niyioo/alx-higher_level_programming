@@ -12,7 +12,7 @@ def list_division(my_list_1, my_list_2, list_length):
                         result = numerator / denominator
                     else:
                         print("division by 0")
-                except (ValueError, TypeError):
+                except (ValueError, TypeError, ZeroDivisionError):
                     print("wrong type")
             else:
                 print("out of range")
