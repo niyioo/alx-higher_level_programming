@@ -5,19 +5,19 @@ def list_division(my_list_1, my_list_2, list_length):
         try:
             result = 0
             if i < len(my_list_1) and i < len(my_list_2):
-                if isinstance(my_list_1[i], (int, float)) and \
-                        isinstance(my_list_2[i], (int, float)):
-                    if my_list_2[i] != 0:
-                        result = my_list_1[i] / my_list_2[i]
+                try:
+                    numerator = float(my_list_1[i])
+                    denominator = float(my_list_2[i])
+                    if denominator != 0:
+                        result = numerator / denominator
                     else:
                         print("division by 0")
-                else:
+                except (ValueError, TypeError):
                     print("wrong type")
             else:
                 print("out of range")
-            new_list.append(result)
         except IndexError:
             pass
         finally:
-            print(result)
+            new_list.append(result)
     return new_list
