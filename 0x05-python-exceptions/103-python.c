@@ -23,6 +23,29 @@ void print_python_list(PyObject *p)
 		PyObject *item = PyList_GetItem(p, i);
 		const char *item_type = Py_TYPE(item)->tp_name;
 		printf("Element %zd: %s\n", i, item_type);
+
+		if (PyBytes_Check(item))
+		{
+			printf("[.] bytes object info\n");
+			Py_ssize_t bytes_size = PyBytes_Size(item);
+			printf("  size: %zd\n", bytes_size);
+
+			const char *str = PyBytes_AsString(item);
+			printf("  trying string: %s\n", str);
+
+			printf("  first 6 bytes: ");
+			for (Py_ssize_t j = 0; j < 6 && j < bytes_size; ++j)
+			{
+				printf("%02x ", (unsigned char)str[j]);
+			}
+			printf("\n");
+		}
+		else if (PyFloat_Check(item))
+		{
+			printf("[.] float object info\n");
+			double value = PyFloat_AsDouble(item);
+			printf("  value: %f\n", value);
+		}
 	}
 }
 
@@ -45,12 +68,12 @@ void print_python_bytes(PyObject *p)
 	const char *str = PyBytes_AsString(p);
 	printf("  trying string: %s\n", str);
 
-	printf("  first 10 bytes: ");
-	for (Py_ssize_t i = 0; i < 10 && i < size; ++i)
+	printf("  first 6 bytes: ");
+	for (Py_ssize_t i = 0; i < 6 && i < size; ++i)
 	{
 		printf("%02x ", (unsigned char)str[i]);
 	}
-	printf("\n");
+	printf("00\n");
 }
 
 /**
