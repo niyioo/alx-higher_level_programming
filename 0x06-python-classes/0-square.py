@@ -4,6 +4,7 @@
 This is a module that provides a description of the module's purpose.
 """
 
+
 class Square:
     """
     This class represents a square shape.
