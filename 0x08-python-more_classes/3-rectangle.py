@@ -52,7 +52,10 @@ class Rectangle:
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
-        """String representation of the rectangle"""
+        """Return a string representation of the rectangle"""
         if self.__width == 0 or self.__height == 0:
             return ""
-        return (("#" * self.__width) + "\n") * self.__height
+        rectangle_str = ""
+        for _ in range(self.__height):
+            rectangle_str += "#" * self.__width + "\n"
+        return rectangle_str.rstrip()
