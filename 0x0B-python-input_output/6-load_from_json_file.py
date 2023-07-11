@@ -4,6 +4,7 @@
 
 import json
 
+
 def load_from_json_file(filename):
     """
     Load a Python object (data structure) from a JSON file.

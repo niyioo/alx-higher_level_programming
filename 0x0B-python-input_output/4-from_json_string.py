@@ -4,6 +4,7 @@
 
 import json
 
+
 def from_json_string(my_str):
     """
     Return the Python data structure represented by a JSON string.
