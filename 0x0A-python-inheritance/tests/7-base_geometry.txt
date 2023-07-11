@@ -1,7 +1,7 @@
 Test cases for BaseGeometry class.
-
 Importing class from the module:
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
 
 Trying to print the area
     >>> bg = BaseGeometry()
