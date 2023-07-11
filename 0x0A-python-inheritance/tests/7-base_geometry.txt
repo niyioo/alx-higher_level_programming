@@ -1,0 +1,29 @@
+Test cases for BaseGeometry class.
+
+Importing class from the module:
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> geom = BaseGeometry()
+>>> geom.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+>>> geom.integer_validator("Length", 5)
+>>> geom.integer_validator("Width", -3)
+Traceback (most recent call last):
+    ...
+ValueError: Width must be greater than 0
+
+>>> geom.integer_validator("Height", "abc")
+Traceback (most recent call last):
+    ...
+TypeError: Height must be an integer
+
+import doctest
+
+# Create an instance of the BaseGeometry class
+geom = BaseGeometry()
+
+# Run the doctest
+doctest.testmod()
+
