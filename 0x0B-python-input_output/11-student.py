@@ -32,9 +32,24 @@ class Student:
         Returns:
             dict: The dictionary representation of the Student instance.
         """
-        if attrs is None:
-            attrs = self.__dict__.keys()
-        else:
-            attrs = [attr for attr in attrs if hasattr(self, attr)]
+        obj = self.__dict__.copy()
+        if type(attrs) is list:
 
-        return {attr: getattr(self, attr) for attr in attrs}
+            for item in attrs:
+                if type(item) is not str:
+                    return obj
+
+            d_list = {}
+
+            for iatr in range(len(attrs)):
+                for satr in obj:
+                    if attrs[iatr] == satr:
+                        d_list[satr] = obj[satr]
+            return d_list
+
+        return obj
+
+    def reload_from_json(self, json):
+        """ Replaces all attributes of the Student instance """
+        for atr in json:
+            self.__dict__[atr] = json[atr]
