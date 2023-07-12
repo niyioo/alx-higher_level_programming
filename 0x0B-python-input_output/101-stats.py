@@ -5,36 +5,54 @@
 import sys
 
 
-status_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
-total_file_size = 0
-status_counts = {code: 0 for code in status_codes}
+def print_info():
+    """
+    Prints the file size and status code counts.
+    """
+    print('File size: {:d}'.format(file_size))
 
-line_count = 0
+    for scode, code_times in sorted(status_codes.items()):
+        if code_times > 0:
+            print('{}: {:d}'.format(scode, code_times))
+
+
+status_codes = {
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
+}
+
+lc = 0
+file_size = 0
+
 try:
     for line in sys.stdin:
-        line_count += 1
+        if lc != 0 and lc % 10 == 0:
+            print_info()
 
-        """Extract information from the line"""
-        line_parts = line.split(' ')
-        if len(line_parts) >= 7:
-            status_code = line_parts[-2]
-            file_size = int(line_parts[-1])
-            total_file_size += file_size
+        pieces = line.split()
 
-            """Count status codes"""
-            if status_code in status_counts:
-                status_counts[status_code] += 1
+        try:
+            status = pieces[-2]
 
-        """Print statistics every 10 lines"""
-        if line_count % 10 == 0:
-            print("File size: {:d}".format(total_file_size))
-            for code in sorted(status_counts.keys()):
-                if status_counts[code] > 0:
-                    print("{:s}: {:d}".format(code, status_counts[code]))
+            if status in status_codes:
+                status_codes[status] += 1
+        except IndexError:
+            pass
 
+        try:
+            file_size += int(pieces[-1])
+        except (IndexError, ValueError):
+            pass
+
+        lc += 1
+
+    print_info()
 except KeyboardInterrupt:
-    """Print final statistics on keyboard interruption"""
-    print("File size: {:d}".format(total_file_size))
-    for code in sorted(status_counts.keys()):
-        if status_counts[code] > 0:
-            print("{:s}: {:d}".format(code, status_counts[code]))
+    print_info()
+    raise
