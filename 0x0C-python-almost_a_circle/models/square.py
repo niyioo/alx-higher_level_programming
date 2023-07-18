@@ -23,7 +23,8 @@ class Square(Rectangle):
             id (int): Optional ID for the instance.
 
         Attributes:
-            size (int): Size of the square (same as width and height in Rectangle).
+            size (int): Size of the square (same as
+            width and height in Rectangle).
             x (int): X-coordinate of the square.
             y (int): Y-coordinate of the square.
         """
@@ -61,3 +62,20 @@ class Square(Rectangle):
             str: Square representation.
         """
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+
+    def update(self, *args, **kwargs):
+        """
+        Assigns attributes based on the provided arguments.
+
+        Args:
+            *args: List of arguments (id, size, x, y).
+            **kwargs: Dictionary of keyword arguments
+            representing attribute-value pairs.
+        """
+        if args:
+            attrs = ["id", "size", "x", "y"]
+            for i, arg in enumerate(args):
+                setattr(self, attrs[i], arg)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
