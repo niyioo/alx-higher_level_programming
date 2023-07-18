@@ -63,19 +63,16 @@ class Square(Rectangle):
         """
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
-    def update(self, *args, **kwargs):
+    def to_dictionary(self):
         """
-        Assigns attributes based on the provided arguments.
+        Return the dictionary representation of a Square.
 
-        Args:
-            *args: List of arguments (id, size, x, y).
-            **kwargs: Dictionary of keyword arguments
-            representing attribute-value pairs.
+        Returns:
+            dict: Dictionary containing the attributes of the Square.
         """
-        if args:
-            attrs = ["id", "size", "x", "y"]
-            for i, arg in enumerate(args):
-                setattr(self, attrs[i], arg)
-        else:
-            for key, value in kwargs.items():
-                setattr(self, key, value)
+        return {
+            "id": self.id,
+            "size": self.size,
+            "x": self.x,
+            "y": self.y,
+        }

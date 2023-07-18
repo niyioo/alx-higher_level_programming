@@ -54,7 +54,8 @@ class Rectangle(Base):
             value (int): Width value to set.
 
         Raises:
-            ValueError: If width is not a positive integer.
+            TypeError: If width is not an integer.
+            ValueError: If width is less than or equal to 0.
         """
         if not isinstance(value, int):
             raise TypeError("Width must be an integer")
@@ -81,7 +82,8 @@ class Rectangle(Base):
             value (int): Height value to set.
 
         Raises:
-            ValueError: If height is not a positive integer.
+            TypeError: If height is not an integer.
+            ValueError: If height is less than or equal to 0.
         """
         if not isinstance(value, int):
             raise TypeError("Height must be an integer")
@@ -108,7 +110,8 @@ class Rectangle(Base):
             value (int): X-coordinate value to set.
 
         Raises:
-            ValueError: If x is not an integer or is less than 0.
+            TypeError: If x is not an integer.
+            ValueError: If x is less than 0.
         """
         if not isinstance(value, int):
             raise TypeError("X-coordinate must be an integer")
@@ -135,7 +138,8 @@ class Rectangle(Base):
             value (int): Y-coordinate value to set.
 
         Raises:
-            ValueError: If y is not an integer or is less than 0.
+            TypeError: If y is not an integer.
+            ValueError: If y is less than 0.
         """
         if not isinstance(value, int):
             raise TypeError("Y-coordinate must be an integer")
@@ -172,8 +176,8 @@ class Rectangle(Base):
         Returns:
             str: Rectangle representation.
         """
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} -\
-                {self.width}/{self.height}"
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y}\
+                - {self.width}/{self.height}"
 
     def update(self, *args, **kwargs):
         """
@@ -190,3 +194,18 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """
+        Return the dictionary representation of a Rectangle.
+
+        Returns:
+            dict: Dictionary containing the attributes of the Rectangle.
+        """
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y,
+        }
