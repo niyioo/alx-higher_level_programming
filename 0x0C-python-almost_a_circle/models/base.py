@@ -4,6 +4,7 @@
 Module: base
 """
 
+
 class Base:
     """
     Base class for managing id attribute.
