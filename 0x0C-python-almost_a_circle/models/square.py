@@ -23,8 +23,7 @@ class Square(Rectangle):
             id (int): Optional ID for the instance.
 
         Attributes:
-            size (int): Size of the square
-            (same as width and height in Rectangle).
+            size (int): Size of the square (same as width and height in Rectangle).
             x (int): X-coordinate of the square.
             y (int): Y-coordinate of the square.
         """
