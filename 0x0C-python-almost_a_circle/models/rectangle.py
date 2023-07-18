@@ -56,8 +56,10 @@ class Rectangle(Base):
         Raises:
             ValueError: If width is not a positive integer.
         """
-        if not isinstance(value, int) or value <= 0:
-            raise ValueError("Width must be a positive integer")
+        if not isinstance(value, int):
+            raise TypeError("Width must be an integer")
+        if value <= 0:
+            raise ValueError("Width must be > 0")
         self.__width = value
 
     @property
@@ -81,8 +83,10 @@ class Rectangle(Base):
         Raises:
             ValueError: If height is not a positive integer.
         """
-        if not isinstance(value, int) or value <= 0:
-            raise ValueError("Height must be a positive integer")
+        if not isinstance(value, int):
+            raise TypeError("Height must be an integer")
+        if value <= 0:
+            raise ValueError("Height must be > 0")
         self.__height = value
 
     @property
@@ -104,10 +108,12 @@ class Rectangle(Base):
             value (int): X-coordinate value to set.
 
         Raises:
-            ValueError: If x is not an integer.
+            ValueError: If x is not an integer or is less than 0.
         """
         if not isinstance(value, int):
-            raise ValueError("X-coordinate must be an integer")
+            raise TypeError("X-coordinate must be an integer")
+        if value < 0:
+            raise ValueError("X-coordinate must be >= 0")
         self.__x = value
 
     @property
@@ -129,8 +135,57 @@ class Rectangle(Base):
             value (int): Y-coordinate value to set.
 
         Raises:
-            ValueError: If y is not an integer.
+            ValueError: If y is not an integer or is less than 0.
         """
         if not isinstance(value, int):
-            raise ValueError("Y-coordinate must be an integer")
+            raise TypeError("Y-coordinate must be an integer")
+        if value < 0:
+            raise ValueError("Y-coordinate must be >= 0")
         self.__y = value
+
+    def area(self):
+        """
+        Calculate the area of the Rectangle.
+
+        Returns:
+            int: Area of the Rectangle.
+        """
+        return self.width * self.height
+
+    def display(self):
+        """
+        Display the Rectangle instance with the character '#',
+        taking into account x and y coordinates.
+
+        Prints:
+            Rectangle representation using '#'.
+        """
+        print("\n" * self.y, end="")
+        for _ in range(self.height):
+            print(" " * self.x, end="")
+            print("#" * self.width)
+
+    def __str__(self):
+        """
+        Override the __str__ method to return the Rectangle representation.
+
+        Returns:
+            str: Rectangle representation.
+        """
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+
+    def update(self, *args, **kwargs):
+        """
+        Assign values to attributes using positional and keyword arguments.
+
+        Args:
+            *args: Positional arguments in the order (id, width, height, x, y).
+            **kwargs: Keyword arguments representing attribute-value pairs.
+        """
+        if args:
+            attrs = ["id", "width", "height", "x", "y"]
+            for i, arg in enumerate(args):
+                setattr(self, attrs[i], arg)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
