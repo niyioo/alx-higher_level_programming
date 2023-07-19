@@ -8,7 +8,7 @@ import unittest
 from models.square import Square
 
 
-class TestSquare(unittest.TestCase):
+class TestSquareMethods(unittest.TestCase):
     """
     Test cases for the Square class.
     """

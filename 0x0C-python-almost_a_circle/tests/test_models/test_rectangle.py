@@ -8,7 +8,7 @@ import unittest
 from models.rectangle import Rectangle
 
 
-class TestRectangle(unittest.TestCase):
+class TestRectangleMethods(unittest.TestCase):
     """
     Test cases for the Rectangle class.
     """
