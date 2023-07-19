@@ -82,7 +82,9 @@ class Base:
             None
         """
         filename = cls.__name__ + ".json"
-        json_string = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
+        json_string = cls.to_json_string(
+            [obj.to_dictionary() for obj in list_objs]
+        )
         with open(filename, 'w') as file:
             file.write(json_string)
 
@@ -98,7 +100,9 @@ class Base:
             None
         """
         filename = cls.__name__ + ".csv"
-        csv_string = cls.to_csv_string([obj.to_dictionary() for obj in list_objs])
+        csv_string = cls.to_csv_string(
+            [obj.to_dictionary() for obj in list_objs]
+        )
         with open(filename, 'w') as file:
             file.write(csv_string)
 
@@ -155,7 +159,8 @@ class Base:
             with open(filename, 'r') as file:
                 json_string = file.read()
                 dictionaries = cls.from_json_string(json_string)
-                instances = [cls.create(**dictionary) for dictionary in dictionaries]
+                instances = [cls.create(**dictionary)
+                             for dictionary in dictionaries]
                 return instances
         except FileNotFoundError:
             return []
@@ -173,7 +178,8 @@ class Base:
             with open(filename, 'r') as file:
                 csv_string = file.read()
                 dictionaries = cls.from_csv_string(csv_string)
-                instances = [cls.create(**dictionary) for dictionary in dictionaries]
+                instances = [cls.create(**dictionary)
+                             for dictionary in dictionaries]
                 return instances
         except FileNotFoundError:
             return []
@@ -181,7 +187,8 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
-        Open a window and draw all the Rectangles and Squares using the Turtle graphics module.
+        Open a window and draw all the Rectangles
+        and Squares using the Turtle graphics module.
 
         Args:
             list_rectangles (list): List of Rectangle instances.
