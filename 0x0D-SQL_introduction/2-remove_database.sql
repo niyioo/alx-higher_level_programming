@@ -1,4 +1,4 @@
--- Task: Deletes the database hbtn_0c_0 on the MySQL server.
+-- Task: Delete the database hbtn_0c_0 if it exists.
 
--- Deletes the database hbtn_0c_0.
-DELETE DATABASE hbtn_0c_0;
+-- Try to delete the database if it exists.
+DROP DATABASE IF EXISTS hbtn_0c_0;
