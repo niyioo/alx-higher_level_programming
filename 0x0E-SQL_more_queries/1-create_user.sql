@@ -1,9 +1,12 @@
--- Check if the user user_0d_1 already exists
-SELECT COUNT(*) INTO @user_exists FROM mysql.user WHERE user = 'user_0d_1';
+-- Create the user 'user_0d_1' with the password 'user_0d_1_pwd' if the user doesn't already exist
+CREATE USER
+    IF NOT EXISTS 'user_0d_1'
+    IDENTIFIED BY 'user_0d_1_pwd';
 
--- If user_0d_1 does not exist, create the user with all privileges
-IF @user_exists = 0 THEN
-    CREATE USER 'user_0d_1'@'localhost' IDENTIFIED BY 'user_0d_1_pwd';
-    GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost';
-    FLUSH PRIVILEGES;
-END IF;
+-- Grant all privileges on all databases and tables to the user 'user_0d_1' when connecting from the 'localhost' host
+GRANT ALL PRIVILEGES
+    ON *.*
+    TO 'user_0d_1'@'localhost';
+
+-- flush to reload
+FLUSH PRIVILEGES;
