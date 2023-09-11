@@ -1,0 +1,11 @@
+#!/usr/bin/nodejs
+
+const arg1 = process.argv[2];
+const arg2 = process.argv[3];
+
+if (arg1 === undefined || arg2 === undefined) {
+  console.log("Usage: node script.js <arg1> <arg2>");
+} else {
+  console.log(arg1 + ' is ' + arg2);
+}
+
