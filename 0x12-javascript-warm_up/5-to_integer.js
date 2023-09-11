@@ -1,4 +1,4 @@
-#!/usr/bin/nodejs
+#!/usr/bin/node
 
 const arg1 = process.argv[2];
 
