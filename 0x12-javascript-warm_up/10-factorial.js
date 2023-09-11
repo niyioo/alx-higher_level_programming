@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
 function factorial(n) {
     if (isNaN(n)) {
         return 1; // Factorial of NaN is 1
@@ -10,8 +9,6 @@ function factorial(n) {
         return n * factorial(n - 1); // Recursive calculation of factorial
     }
 }
-
 const arg = parseInt(process.argv[2]);
-
 const result = factorial(arg);
 console.log(result);
