@@ -1,10 +1,10 @@
 #!/usr/bin/node
 
 // Import the Square class from 5-square.js
-const BaseSquare = require ('./5-square');
+const BaseSquare = require('./5-square');
 
 class Square extends BaseSquare {
-  charPrint(c) {
+  charPrint (c) {
     if (c === undefined) {
       c = 'X';
     }
