@@ -27,22 +27,23 @@ def main():
     try:
         # Connect to MySQL server
         db = MySQLdb.connect(
-                host="localhost",
-                port=3306,
-                user=username,
-                passwd=password,
-                db=database
-                )
+            host="localhost",
+            port=3306,
+            user=username,
+            passwd=password,
+            db=database
+        )
 
         # Create a cursor object
         cursor = db.cursor()
 
         # Execute the SQL query to select states with names
         # starting with 'N' and order by states.id
-        cursor.execute("SELECT * FROM states "
-                "WHERE name LIKE 'N%' "
-                "ORDER BY states.id"
-                )
+        cursor.execute(
+            "SELECT * FROM states "
+            "WHERE name LIKE 'N%' "
+            "ORDER BY states.id"
+        )
 
         # Fetch all the rows from the result set
         rows = cursor.fetchall()
