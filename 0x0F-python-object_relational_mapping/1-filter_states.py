@@ -41,8 +41,9 @@ def main():
         # starting with 'N' and order by states.id
         cursor.execute(
             "SELECT * FROM states "
-            "WHERE name LIKE 'N%' "
-            "ORDER BY states.id"
+            "WHERE CONVERT('name' USING Latin1) "
+            "COLLATE Latin1_General_CS "
+            "LIKE 'N%' "
         )
 
         # Fetch all the rows from the result set
