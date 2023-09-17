@@ -39,18 +39,16 @@ def main():
         cursor = db.cursor()
 
         # Execute the SQL query to select cities of the specified state
-        cursor.execute("SELECT GROUP_CONCAT(cities.name "
-                       "ORDER BY cities.id SEPARATOR ', ') "
+        cursor.execute("SELECT cities.id, cities.name, states.name "
                        "FROM cities "
                        "JOIN states ON cities.state_id = states.id "
                        "WHERE states.name = '{}';".format(sys.argv[4])
                        )
 
-        # Fetch the concatenated city names
-        cities = cursor.fetchone()[0]
+        rows = cursor.fetchall()
 
         # Display the concatenated city names
-        print(cities)
+        print(", ".join(rows[1]))
 
         # Close the cursor and the database connection
         cursor.close()
