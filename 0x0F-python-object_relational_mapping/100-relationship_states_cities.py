@@ -3,7 +3,6 @@
 A script to create the State "California" with the City "San Francisco"
 in the database hbtn_0e_100_usa.
 """
-
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
