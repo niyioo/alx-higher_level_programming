@@ -14,7 +14,7 @@ if __name__ == "__main__":
     """
     Connects to a MySQL database and retrieves states based on user input.
     """
-        # Connect to MySQL server
+    # Connect to MySQL server
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
