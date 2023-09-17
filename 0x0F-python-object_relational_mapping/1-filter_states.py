@@ -9,12 +9,7 @@ import MySQLdb
 import sys
 
 
-def main():
-    """
-    Connects to a MySQL database and lists states
-    with names starting with 'N'.
-    """
-
+if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
@@ -39,7 +34,3 @@ def main():
 
     for row in rows:
         print(row)
-
-
-if __name__ == "__main__":
-    main()
