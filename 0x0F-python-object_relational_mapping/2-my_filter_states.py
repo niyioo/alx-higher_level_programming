@@ -9,7 +9,6 @@ Usage: ./2-my_filter_states.py <username> <password> <database> <state_name>
 import MySQLdb
 from sys import argv
 
-
 if __name__ == "__main__":
     """
     Connects to a MySQL database and retrieves states based on user input.
