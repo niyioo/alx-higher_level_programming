@@ -40,7 +40,7 @@ def main():
 
         # Query State objects and their associated City objects
         states_with_cities = session.query(State)\
-            .outerjoin(city)\
+            .outerjoin(City)\
             .order_by(State.id, City.id)\
             .all()
 
