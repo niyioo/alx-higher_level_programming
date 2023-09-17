@@ -40,6 +40,7 @@ def main():
 
         # Query State objects and their associated City objects
         states_with_cities = session.query(State)\
+            .outerjoin(city)\
             .order_by(State.id, City.id)\
             .all()
 
@@ -47,7 +48,7 @@ def main():
         for state in states_with_cities:
             print("{}: {}".format(state.id, state.name))
             for city in state.cities:
-                print("\t{}: {}".format(city.id, city.name))
+                print("    {}: {}".format(city.id, city.name))
 
         # Close the session
         session.close()
