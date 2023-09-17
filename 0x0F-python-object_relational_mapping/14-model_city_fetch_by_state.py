@@ -38,11 +38,10 @@ def main():
         session = Session()
 
         # Query all City objects and sort them by city ID
-        cities = session.query(City).order_by(City.id).all()
+        cities = session.query(State, City).filter(State.id == City.state_id).all()
 
         # Display the results
-        for city in cities:
-            state = session.query(State).filter_by(id=city.state_id).first()
+        for state, city in cities:
             print("{}: ({}) {}".format(state.name, city.id, city.name))
 
         # Close the session
