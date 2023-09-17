@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     # Create a cursor object
     cursor = db.cursor()
-    
+
     # Execute the SQL query to select states based on user input
     cursor.execute(
         "SELECT * FROM states "
