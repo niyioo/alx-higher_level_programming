@@ -24,42 +24,36 @@ def main():
     password = sys.argv[2]
     database = sys.argv[3]
 
-    try:
-        # Connect to MySQL server
-        db = MySQLdb.connect(
-            host="localhost",
-            port=3306,
-            user=username,
-            passwd=password,
-            db=database
-        )
+    # Connect to MySQL server
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database
+    )
 
-        # Create a cursor object
-        cursor = db.cursor()
+    # Create a cursor object
+    cursor = db.cursor()
 
-        # Execute the SQL query to select states with names
-        # starting with 'N' and order by states.id
-        cursor.execute(
-            "SELECT * FROM states "
-            "WHERE CONVERT('name' USING Latin1) "
-            "COLLATE Latin1_General_CS "
-            "LIKE 'N%' "
-        )
+    # Execute the SQL query to select states with names
+    # starting with 'N' and order by states.id
+    cursor.execute(
+        "SELECT * FROM states "
+        "WHERE name LIKE 'N%' "
+        "ORDER BY states.id"
+    )
 
-        # Fetch all the rows from the result set
-        rows = cursor.fetchall()
+    # Fetch all the rows from the result set
+    rows = cursor.fetchall()
 
-        # Display the results
-        for row in rows:
-            print(row)
+    # Display the results
+    for row in rows:
+        print(row)
 
-        # Close the cursor and the database connection
-        cursor.close()
-        db.close()
-
-    except MySQLdb.Error as e:
-        print("MySQL Error:", e)
-        sys.exit(1)
+    # Close the cursor and the database connection
+    cursor.close()
+    db.close()
 
 
 if __name__ == "__main__":
