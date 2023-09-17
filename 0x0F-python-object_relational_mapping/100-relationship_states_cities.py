@@ -34,7 +34,7 @@ def main():
                 username, password, database),
             pool_pre_ping=True
         )
-
+        Base.metadata.create_all(engine)
         # Create a session to interact with the database
         Session = sessionmaker(bind=engine)
         session = Session()
