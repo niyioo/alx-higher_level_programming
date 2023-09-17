@@ -48,7 +48,7 @@ def main():
         rows = cursor.fetchall()
 
         # Display the concatenated city names
-        print(", ".join([state[1] for state in states]))
+        print(", ".join([row[1] for row in rows]))
 
         # Close the cursor and the database connection
         cursor.close()
