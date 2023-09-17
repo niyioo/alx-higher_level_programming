@@ -14,9 +14,6 @@ def main():
     Connects to a MySQL database and lists states
     with names starting with 'N'.
     """
-    if len(sys.argv) != 4:
-        print("Usage: ./1-filter_states.py <username> <password> <database>")
-        sys.exit(1)
 
     username = sys.argv[1]
     password = sys.argv[2]
