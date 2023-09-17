@@ -37,7 +37,8 @@ def main():
         cursor = db.cursor()
 
         # Execute the SQL query to select all cities and order by cities.id
-        cursor.execute("SELECT * FROM cities ORDER BY cities.id")
+        cursor.execute("SELECT cities.id, cities.name, states.name \
+        FROM cities JOIN states ON cities.state_id = states.id;")
 
         # Fetch all the rows from the result set
         rows = cursor.fetchall()
