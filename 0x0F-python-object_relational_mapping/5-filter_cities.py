@@ -43,8 +43,8 @@ def main():
                        "ORDER BY cities.id SEPARATOR ', ') "
                        "FROM cities "
                        "JOIN states ON cities.state_id = states.id "
-                       "WHERE states.name = %s",
-                       (state_name,))
+                       "WHERE states.name = '{}';".format(sys.argv[4])
+                       )
 
         # Fetch the concatenated city names
         cities = cursor.fetchone()[0]
