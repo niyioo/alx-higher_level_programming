@@ -44,8 +44,9 @@ def main():
         san_francisco = City(name="San Francisco")
         california.cities.append(san_francisco)
 
-        # Add the State to the session
+        # Add the State and City to the session
         session.add(california)
+        session.add(san_francisco)
 
         # Commit the changes to the database
         session.commit()
