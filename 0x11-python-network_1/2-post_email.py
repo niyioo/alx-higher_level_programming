@@ -25,7 +25,7 @@ def send_post_request(url, email):
     """
     value = {"email": email}
     data = urllib.parse.urlencode(value).encode("ascii")
-    
+
     request = urllib.request.Request(url, data)
 
     with urllib.request.urlopen(request) as response:
