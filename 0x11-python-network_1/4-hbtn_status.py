@@ -22,7 +22,7 @@ def fetch_and_display_status():
         None
     """
     url = "https://alx-intranet.hbtn.io/status"
-    
+
     try:
         response = requests.get(url)
         response.raise_for_status()

@@ -28,7 +28,7 @@ def get_x_request_id(url):
         response = requests.get(url)
         response.raise_for_status()
         x_request_id = response.headers.get('X-Request-Id')
-        
+
         if x_request_id:
             print(x_request_id)
     except requests.exceptions.RequestException as e:
