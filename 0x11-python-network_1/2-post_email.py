@@ -1,26 +1,35 @@
 #!/usr/bin/python3
+
 """
-This script sends a POST request to a given URL
-with an email as a parameter and displays the
-body of the response (decoded in utf-8).
+This script sends a POST request to a URL with
+an email as a parameter and displays the body
+of the response (decoded in utf-8).
 """
 
+import sys
 import urllib.request
 import urllib.parse
-import sys
 
 
 def send_post_request(url, email):
-    try:
-        data = urllib.parse.urlencode({'email': email}).encode()
-        req = urllib.request.Request(url, data, method='POST')
-        
-        with urllib.request.urlopen(req) as response:
-            response_data = response.read()
-            decoded_data = response_data.decode('utf-8')
-            print(decoded_data)
-    except urllib.error.URLError as e:
-        print("Error:", e)
+    """
+    Sends a POST request to the specified URL with
+    the given email parameter.
+
+    Args:
+        url (str): The URL to which the POST request is sent.
+        email (str): The email to be sent as a parameter.
+
+    Returns:
+        str: The decoded response body as a UTF-8 encoded string.
+    """
+    value = {"email": email}
+    data = urllib.parse.urlencode(value).encode("ascii")
+    
+    request = urllib.request.Request(url, data)
+
+    with urllib.request.urlopen(request) as response:
+        return response.read().decode("utf-8")
 
 
 if __name__ == "__main__":
@@ -31,5 +40,5 @@ if __name__ == "__main__":
     url = sys.argv[1]
     email = sys.argv[2]
 
-    send_post_request(url, email)
-    print("Your email is:", email)
+    response_body = send_post_request(url, email)
+    print(response_body)
