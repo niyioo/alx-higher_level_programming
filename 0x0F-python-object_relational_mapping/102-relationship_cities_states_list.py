@@ -40,11 +40,12 @@ def main():
         session = Session()
 
         # Query all City objects and their associated State objects
-        cities_with_states = session.query(City).order_by(City.id).all()
+        cws = session.query(State).join(City).order_by(City.id).all()
 
         # Display the results
-        for city in cities_with_states:
-            print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+        for state in cws:
+            for city in state.cities:
+                print("{}: {} -> {}".format(city.id, city.name, state.name))
 
         # Close the session
         session.close()
